@@ -1,0 +1,8 @@
+name: amy1-pipeline
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - trimmomatic=0.39
+  - bowtie2
+  - samtools

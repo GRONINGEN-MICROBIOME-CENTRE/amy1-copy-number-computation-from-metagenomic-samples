@@ -1,0 +1,17 @@
+# Personal config (contains your cluster paths) - never commit this
+config/config.sh
+
+# Pipeline outputs
+*.bam
+*.bai
+*.fastq.gz
+*.fq.gz
+logs/
+01_trimmed*/
+02_aligned*/
+*.tsv
+*.bak*
+
+# OS / editor cruft
+.DS_Store
+*.swp

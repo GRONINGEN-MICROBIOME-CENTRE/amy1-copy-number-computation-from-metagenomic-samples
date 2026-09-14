@@ -1,0 +1,51 @@
+# config.sh.example
+#
+# Copy this file to config.sh (in the same config/ directory) and edit
+# the values for your own cluster and data. config.sh itself is
+# git-ignored, so your personal paths never get committed.
+#
+#   cp config/config.sh.example config/config.sh
+#   nano config/config.sh
+
+# -----------------------------------------------------------------------
+# Conda environment
+# -----------------------------------------------------------------------
+# Path to your conda.sh (usually under <miniconda_or_anaconda>/etc/profile.d/)
+CONDA_SH="/path/to/miniconda3/etc/profile.d/conda.sh"
+
+# Name of a conda environment containing: trimmomatic, bowtie2, samtools
+CONDA_ENV="your_conda_env"
+
+# -----------------------------------------------------------------------
+# Reference genome
+# -----------------------------------------------------------------------
+# Bowtie2 index prefix (no file extension), GRCh38-based. Must NOT use
+# ALT contigs (a plain "no_alt" GRCh38 build is fine; AMY1 coordinates
+# below are GRCh38).
+BOWTIE2_INDEX="/path/to/GRCh38_no_alt_plus_hs38d1"
+
+# Trimmomatic adapters FASTA (TruSeq3-PE-2.fa or equivalent for your data)
+ADAPTERS="/path/to/adapters/TruSeq3-PE-2.fa"
+
+# -----------------------------------------------------------------------
+# Input / output
+# -----------------------------------------------------------------------
+# Directory containing one subfolder per sample, each with paired FASTQs
+# named <anything>_1.fq.gz / <anything>_2.fq.gz (glob-matched, so exact
+# filenames beyond the _1/_2 suffix don't matter)
+FASTQ_DIR="/path/to/input_fastqs"
+
+# Base directory for all pipeline outputs (trimmed reads, BAMs, logs,
+# results table) - created automatically if it doesn't exist
+WORKDIR="/path/to/output"
+
+# -----------------------------------------------------------------------
+# SLURM resources
+# -----------------------------------------------------------------------
+# Edit these for your cluster's partition names and available resources.
+# Passed to sbatch as command-line overrides by submit_alignment.sh, so
+# you don't need to edit the #SBATCH directives inside align_sample.sh.
+SLURM_PARTITION="your_partition"
+SLURM_CPUS=16
+SLURM_MEM="64G"
+SLURM_TIME="1-00:00:00"
